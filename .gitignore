@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+reports/*.pdf
+reports/*.json
+reports/*.csv
+*.pt
+*.onnx
+*.tflite
+.idea/
+.vscode/
