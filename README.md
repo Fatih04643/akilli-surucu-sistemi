@@ -16,3 +16,30 @@ Bu proje, monoküler kamera akışı üzerinden sürücü yorgunluğunu, mikro u
    python -m venv venv
    # Windows için:
    .\venv\Scripts\activate
+   ```
+
+2. Gerekli kütüphaneleri kurun:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Ana uygulamayı başlatın:
+   ```bash
+   python main.py
+   ```
+
+## Mimari Özeti
+- **UI Layer (`ui/`):** PyQt5 tabanlı GUI ve video işleme thread'leri.
+- **Services Layer (`services/`):** Sesli uyarı (TTS) ve raporlama (PDF) mantığı.
+- **Utils Layer (`utils/`):** Kamera yönetimi, metrik hesaplama ve ML model yükleme yardımcıları.
+- **Main Entry:** `main.py` ve `app_launcher.py` ile uygulama başlatma.
+
+## Kullanılan Modeller
+- **Drowsiness Detection:** MediaPipe Face Mesh & Holistic.
+- **Distraction Detection (Phone):** YOLOv8n (Önceden eğitilmiş).
+
+## Güvenlik ve Performans
+Sistem, yanlış pozitifleri minimuma indirmek için **ardışık kare analizi** (consecutive frame analysis) kullanır. 5 saniyeden fazla süren tehlikeli durumlar, sürücüyü uyarmadan önce birikimli risk eşiğini geçmelidir.
+
+## Loglama
+Sistem çıktıları konsola yazdırılır ve `output/logs/` klasörüne zaman damgalı log dosyaları kaydedilir.
